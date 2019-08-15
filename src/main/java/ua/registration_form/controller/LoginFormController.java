@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ua.registration_form.dto.UserDTO;
+import ua.registration_form.entity.Exceptions.WrongInputException;
 import ua.registration_form.service.LoginFormService;
 
 @Slf4j
@@ -16,6 +17,7 @@ import ua.registration_form.service.LoginFormService;
 public class LoginFormController {
 
     private final LoginFormService loginFormService;
+
     @Autowired
     public LoginFormController(LoginFormService loginFormService) {
         this.loginFormService = loginFormService;
@@ -23,10 +25,9 @@ public class LoginFormController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public void loginFormController(UserDTO user){
+    public void loginFormController(UserDTO user) throws WrongInputException {
         //here come data from login page
         log.info("{}", user);
-//        User.builder().
-
+        loginFormService.checkInput(user);
     }
 }

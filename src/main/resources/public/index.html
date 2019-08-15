@@ -16,7 +16,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h3 id="resultMessage">{{message}}</h3>
-            <h1 class="page-header">Login Demo</h1>
+            <h1 class="page-header">Login DEMO</h1>
+
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate ng-submit="form.$valid && sendForm(auth)">
                 <div class="form-group">
                     <label id="exampleInputEmailLabel" for="exampleInputEmail1">Email address</label>
@@ -37,9 +38,10 @@
                            ng-model="auth.password">
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px" ng-disabled="form.$invalid">
-                    Submit
+                    Log in
                 </button>
             </form>
+            <a class="btn btn-primary" href="/form" role="button">Registrate</a>
         </div>
     </div>
 </div>
