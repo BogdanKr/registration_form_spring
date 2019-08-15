@@ -4,7 +4,10 @@ import lombok.Data;
 
 @Data
 public class NoteDTO {
-    private String names;
-    private String login;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+
 
 }

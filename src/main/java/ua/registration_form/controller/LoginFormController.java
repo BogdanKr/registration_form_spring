@@ -26,7 +26,7 @@ public class LoginFormController {
     public void loginFormController(UserDTO user){
         //here come data from login page
         log.info("{}", user);
-
+//        User.builder().
 
     }
 }

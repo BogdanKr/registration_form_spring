@@ -21,22 +21,40 @@
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
                   ng-submit="form.$valid && sendForm(auth)">
                 <div class="form-group">
-                    <label id="inputNameLabel" for="exampleInputName">First name</label>
+                    <label id="inputFirstNameLabel" for="exampleInputName">First name</label>
                     <input type="text"
                            class="form-control"
-                           id="exampleInputName"
+                           id="exampleInputFirstName"
                            placeholder="First Name"
                            required
-                           ng-model="auth.names">
+                           ng-model="auth.firstName">
                 </div>
                 <div class="form-group">
-                    <label id="inputLoginLabel" for="exampleInputLogin">Login</label>
+                    <label id="inputLastNameLabel" for="exampleInputName">Last name</label>
                     <input type="text"
                            class="form-control"
-                           id="exampleInputLogin"
-                           placeholder="Login"
+                           id="exampleInputLastName"
+                           placeholder="Last Name"
                            required
-                           ng-model="auth.login">
+                           ng-model="auth.lastName">
+                </div>
+                <div class="form-group">
+                    <label id="exampleInputEmailLabel" for="exampleInputEmail1">Email address</label>
+                    <input type="email"
+                           class="form-control"
+                           id="exampleInputEmail1"
+                           placeholder="Email"
+                           required
+                           ng-model="auth.email">
+                </div>
+                <div class="form-group">
+                    <label id="exampleInputPasswordLabel" class="control-label" for="exampleInputPassword1">Password</label>
+                    <input type="password"
+                           class="form-control"
+                           id="exampleInputPassword1"
+                           placeholder="Please input password here"
+                           required
+                           ng-model="auth.password">
                 </div>
                 <button type="submit" class="btn btn-success" style="margin-top:30px" ng-disabled="form.$invalid">
                     Submit

@@ -2,13 +2,13 @@ angular.module("registration_form",[])
     .controller("AppCtrl", function ($scope, $http) {
         $scope.auth = {};
         let resultMessageEl = document.getElementById('resultMessage');
-        let exampleInputNameEl = document.getElementById('exampleInputName');
-        let exampleInputLoginEl = document.getElementById('exampleInputLogin');
-        let inputNameLabel = document.getElementById('inputNameLabel');
-        let inputLoginLabel = document.getElementById('inputLoginLabel');
-        exampleInputNameEl.addEventListener('input', () => {
-            inputNameLabel.style.color = 'black';
-        inputLoginLabel.style.color = 'black';
+        let exampleInputFirstNameEl = document.getElementById('exampleInputFirstName');
+        let exampleInputLastNameEl = document.getElementById('exampleInputLastName');
+        let inputFirstNameLabel = document.getElementById('inputFirstNameLabel');
+        let inputLastNameLabel = document.getElementById('inputLastNameLabel');
+        exampleInputFirstNameEl.addEventListener('input', () => {
+            inputFirstNameLabel.style.color = 'black';
+        inputLastNameLabel.style.color = 'black';
         $scope.message = '';
     });
         $scope.sendForm = function(auth){
@@ -21,15 +21,15 @@ angular.module("registration_form",[])
                 (data) => {
                 resultMessageEl.style.color = 'green';
             $scope.message = 'Успешно зарегистрирован';
-            exampleInputNameEl.value = '';
-            exampleInputLoginEl.value = '';
+            exampleInputFirstNameEl.value = 'КТО МОЛОДЕЦ????';
+            exampleInputLastNameEl.value = 'ТЫ МОЛОДЕЦ!!!!!';
         },
             (error) => {
                 resultMessageEl.style.color = 'red';
-                inputNameLabel.style.color = 'red';
-                inputLoginLabel.style.color = 'red';
-                exampleInputNameEl.value = '';
-                exampleInputLoginEl.value = '';
+                inputFirstNameLabel.style.color = 'red';
+                inputLastNameLabel.style.color = 'red';
+                exampleInputFirstNameEl.value = '';
+                exampleInputLastNameEl.value = '';
                 $scope.message = 'При регистрации произошла ошибка';
             }
         );

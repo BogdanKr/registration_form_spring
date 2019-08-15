@@ -1,5 +1,5 @@
 angular.module("login_form",[])
-    .controller("AppCtrl", function ($scope, $http) {
+    .controller("LogCtrl", function ($scope, $http) {
         $scope.auth = {};
         let resultMessageEl = document.getElementById('resultMessage');
         let exampleInputEmailEl = document.getElementById('exampleInputEmail1');
