@@ -1,4 +1,4 @@
-angular.module("registration_form", [])
+angular.module("registration_form",[])
     .controller("AppCtrl", function ($scope, $http) {
         $scope.auth = {};
         let resultMessageEl = document.getElementById('resultMessage');
@@ -6,28 +6,25 @@ angular.module("registration_form", [])
         let exampleInputLoginEl = document.getElementById('exampleInputLogin');
         let inputNameLabel = document.getElementById('inputNameLabel');
         let inputLoginLabel = document.getElementById('inputLoginLabel');
-        exampleInputNameEl.addEventListener('input', () = > {
+        exampleInputNameEl.addEventListener('input', () => {
             inputNameLabel.style.color = 'black';
         inputLoginLabel.style.color = 'black';
         $scope.message = '';
-    })
-        ;
-        $scope.sendForm = function (auth) {
+    });
+        $scope.sendForm = function(auth){
             $http({
                 method: "POST",
                 url: "/api/reg_form",
                 data: $.param(auth),
-                headers: {"Content-Type": "application/x-www-form-urlencoded"}
+                headers: { "Content-Type" : "application/x-www-form-urlencoded" }
             }).then(
-                (data) = > {
+                (data) => {
                 resultMessageEl.style.color = 'green';
             $scope.message = 'Успешно зарегистрирован';
             exampleInputNameEl.value = '';
             exampleInputLoginEl.value = '';
         },
-            (error) =
-        >
-            {
+            (error) => {
                 resultMessageEl.style.color = 'red';
                 inputNameLabel.style.color = 'red';
                 inputLoginLabel.style.color = 'red';
@@ -35,7 +32,6 @@ angular.module("registration_form", [])
                 exampleInputLoginEl.value = '';
                 $scope.message = 'При регистрации произошла ошибка';
             }
-        )
-            ;
+        );
         }
     });
