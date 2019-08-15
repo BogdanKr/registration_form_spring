@@ -29,7 +29,7 @@
             </#if>
 
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
-                  ng-submit="form.$valid && sendForm(auth)">
+                  ng-submit="form.$valid && sendForm(auth)" method="post">
                 <div class="form-group">
                     <label id="exampleInputEmailLabel" for="exampleInputEmail1">Email address</label>
                     <input type="email"

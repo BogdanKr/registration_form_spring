@@ -1,6 +1,7 @@
 package ua.registration_form.service;
 
 import lombok.Data;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ua.registration_form.dto.UserDTO;
@@ -13,11 +14,11 @@ import java.util.Arrays;
 @Service
 public class LoginFormService {
 
-    public String inputUser(UserDTO user) {
+    public String inputUser(@NonNull UserDTO user) {
         return "";
     }
 
-    public void checkInput(UserDTO user) throws WrongInputException {
+    public void checkInput(@NonNull UserDTO user) throws WrongInputException {
         boolean checkEmail = Arrays.stream(DBNote.values())
                 .map(DBNote::getEmail)
                 .anyMatch(email -> email.equals(user.getEmail()));

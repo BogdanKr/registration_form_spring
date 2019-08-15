@@ -3,10 +3,8 @@ package ua.registration_form.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import ua.registration_form.dto.UserDTO;
 import ua.registration_form.entity.Exceptions.WrongInputException;
 import ua.registration_form.service.LoginFormService;
@@ -23,11 +21,21 @@ public class LoginFormController {
         this.loginFormService = loginFormService;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public void loginFormController(UserDTO user) throws WrongInputException {
         //here come data from login page
         log.info("{}", user);
         loginFormService.checkInput(user);
+    }
+
+//    @PostMapping("login")
+//    public String move(){
+//        return "redirect:/hello";
+//    }
+
+    @ExceptionHandler(WrongInputException.class)
+    public ResponseEntity handlerRuntimeException (WrongInputException ex){
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }

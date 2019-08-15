@@ -6,6 +6,8 @@ angular.module("registration_form",[])
         let exampleInputLastNameEl = document.getElementById('exampleInputLastName');
         let inputFirstNameLabel = document.getElementById('inputFirstNameLabel');
         let inputLastNameLabel = document.getElementById('inputLastNameLabel');
+        let emailEl = document.getElementById('exampleInputEmail1');
+        let passwordEl = document.getElementById('exampleInputPassword1');
         exampleInputFirstNameEl.addEventListener('input', () => {
             inputFirstNameLabel.style.color = 'black';
         inputLastNameLabel.style.color = 'black';
@@ -28,8 +30,8 @@ angular.module("registration_form",[])
                 resultMessageEl.style.color = 'red';
                 inputFirstNameLabel.style.color = 'red';
                 inputLastNameLabel.style.color = 'red';
-                exampleInputFirstNameEl.value = '';
-                exampleInputLastNameEl.value = '';
+                emailEl.value = '';
+                passwordEl.value = '';
                 $scope.message = 'При регистрации произошла ошибка';
             }
         );
