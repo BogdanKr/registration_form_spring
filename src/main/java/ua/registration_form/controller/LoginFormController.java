@@ -21,7 +21,7 @@ public class LoginFormController {
         this.loginFormService = loginFormService;
     }
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public void loginFormController(UserDTO user) throws WrongInputException {
         //here come data from login page
@@ -29,10 +29,10 @@ public class LoginFormController {
         loginFormService.checkInput(user);
     }
 
-//    @PostMapping("login")
-//    public String move(){
-//        return "redirect:/hello";
-//    }
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String move(){
+        return "redirect:/hello";
+    }
 
     @ExceptionHandler(WrongInputException.class)
     public ResponseEntity handlerRuntimeException (WrongInputException ex){

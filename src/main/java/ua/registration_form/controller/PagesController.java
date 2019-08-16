@@ -4,8 +4,10 @@ package ua.registration_form.controller;
 //import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ua.registration_form.entity.User;
 
 @Controller
@@ -42,5 +44,11 @@ public class PagesController {
 //        model.addAttribute("firstName", user.getFirstName());
 //        model.addAttribute("roles", user.getRoleType());
         return "hello";
+    }
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name,
+                    Model model) {
+        model.addAttribute("name", name);
+        return "greeting.html";
     }
 }
