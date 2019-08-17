@@ -1,5 +1,6 @@
 angular.module("login_form",[])
     .controller("LogCtrl", function ($scope, $http) {
+
         $scope.auth = {};
         let resultMessageEl = document.getElementById('resultMessage');
         let exampleInputEmailEl = document.getElementById('exampleInputEmail1');
@@ -15,7 +16,7 @@ angular.module("login_form",[])
         $scope.sendForm = function(auth){
             $http({
                 method: "POST",
-                url: "/login",
+                url: "/mylogin",
                 data: $.param(auth),
                 headers: { "Content-Type" : "application/x-www-form-urlencoded" }
             }).then(

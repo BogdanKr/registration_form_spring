@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Login form's Main</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 </head>
@@ -19,7 +20,7 @@
             <h1 class="page-header">Login with email and password</h1>
 
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
-                  ng-submit="form.$valid && sendForm(auth)" method="post">
+                  ng-submit="form.$valid && sendForm(auth)" method="">
                 <div class="form-group">
                     <label id="exampleInputEmailLabel" for="exampleInputEmail1">Email address</label>
                     <input type="email"
@@ -39,11 +40,12 @@
                            required
                            ng-model="auth.password">
                 </div>
+                <input type="hidden" name="_csrf" value="_csrf.token">
                 <button type="submit" class="btn btn-success" style="margin-top:30px" ng-disabled="form.$invalid">
                     Log in
                 </button>
             </form>
-            <a class="btn btn-primary" href="/form" role="button">Registrate</a>
+            <a class="btn btn-primary" href="/form" role="button">Registration</a>
         </div>
     </div>
 </div>

@@ -23,20 +23,15 @@ public class LoginFormController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    public void loginFormController(UserDTO user) throws WrongInputException {
+    @RequestMapping(value = "/mylogin", method = RequestMethod.POST)
+    public String loginFormController(UserDTO user) throws WrongInputException {
         //here come data from login page
         log.info("{}", user);
-        loginFormService.checkInput(user);
+        //loginFormService.checkInput(user);
+        return "main";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String move(){
-        return "login";
-    }
 
-    @ExceptionHandler(WrongInputException.class)
-    public ResponseEntity handlerRuntimeException (WrongInputException ex){
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }
+
+
 }

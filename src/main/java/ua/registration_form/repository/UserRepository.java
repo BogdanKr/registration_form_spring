@@ -6,5 +6,7 @@ import ua.registration_form.entity.User;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+
     List<User> findByFirstName(String firstName);
+    User findByEmail(String email);
 }
