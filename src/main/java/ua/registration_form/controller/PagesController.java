@@ -27,23 +27,23 @@ public class PagesController {
         return "hello";
     }
 
-    @RequestMapping("/login")
-    public String login(@RequestParam(value = "error", required = false) String error,
-                           @RequestParam(value = "logout", required = false) String logout,
-                           Model model) {
-        model.addAttribute("error", error!=null);
-        model.addAttribute("logout", logout!=null);
-        return "login";
-    }
+//    @RequestMapping("/login")
+//    public String login(@RequestParam(value = "error", required = false) String error,
+//                           @RequestParam(value = "logout", required = false) String logout,
+//                           Model model) {
+//        model.addAttribute("error", error!=null);
+//        model.addAttribute("logout", logout!=null);
+//        return "login";
+//    }
 
-    @RequestMapping("/")
-    public String helloPage(Model model) {
+  //  @RequestMapping("/")
+//    public String helloPage(Model model) {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User)authentication.getPrincipal();
 
 //        model.addAttribute("firstName", user.getFirstName());
 //        model.addAttribute("roles", user.getRoleType());
-        return "hello";
-    }
+//        return "hello";
+//    }
 
 }

@@ -1,42 +1,63 @@
 package ua.registration_form.controller;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import ua.registration_form.entity.User;
+import ua.registration_form.repository.UserRepository;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("greeting")
 public class UserController {
-//    @Autowired
-//    private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-
-
-//    @PostMapping(path="/add") // Map ONLY POST Requests
-//    public String addNewUser (@RequestParam String firstName,
-//                              @RequestParam String lastName,
-//                              @RequestParam String email,
-//                              @RequestParam String password) {
-//        User n = User.builder()
-//                .firstName(firstName)
-//                .lastName(lastName)
-//                .email(email)
-//                .password(password)
-//                .build();
-//        userRepository.save(n);
-//        return "Saved";
-//    }
-//
-//    @GetMapping     //(path="/all")
-//    public  String getAllUsers() {
-//        Iterable<User> users = userRepository.findAll();
-//        // This returns a JSON or XML with the users
-//        return "users";
-//    }
-    @RequestMapping()
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
+
+    @GetMapping("/main")
+    public String main(Map<String, Object> model) {
+        Iterable<User> allUsers = userRepository.findAll();
+        model.put("users", allUsers);
+        return "main";
+    }
+
+    @PostMapping ("/main")// Map ONLY POST Requests
+    public String addNewUser(@RequestParam String firstName,
+                             @RequestParam String lastName,
+                             @RequestParam String email,
+                             @RequestParam String password,
+                             Map<String, Object> model) {
+        User newUser = User.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .password(password)
+                .build();
+        userRepository.save(newUser);
+
+        Iterable<User> allUsers = userRepository.findAll();
+        model.put("users", allUsers);
+
+        return "main";
+    }
+
+    @PostMapping()
+    public String findByFirstName(@RequestParam String findName, Map<String, Object> model) {
+        List<User> byFirstName;
+        if (findName != null && !findName.isEmpty())
+            byFirstName = userRepository.findByFirstName(findName);
+        else byFirstName = userRepository.findAll();
+
+        model.put("users", byFirstName);
+        return "main";
+    }
+
 }

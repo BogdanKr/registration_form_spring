@@ -1,0 +1,31 @@
+<html>
+<body>
+<div>
+    <form method="post" >
+        <input type="text" name="firstName" placeholder="FirstName">
+        <input type="text" name="lastName" placeholder="LastName">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+<div>Список юзеров</div>
+
+<div>
+    <form method="post" action="findNameForm">
+        <input type="text" name="findName" placeholder="find use FirstName">
+        <button type="submit">Find user</button>
+    </form>
+</div>
+    {{#users}}
+    <div>
+        <span>{{id}}</span>
+        <b>{{firstName}}</b>
+        <b>{{lastName}}</b>
+        <i>{{email}}</i>
+        <span>{{password}}</span>
+    </div>
+    {{/users}}
+</body>
+</html>
