@@ -31,10 +31,10 @@ public class UserController {
     }
 
     @PostMapping ("addUser")// Map ONLY POST Requests
-    public String addNewUser(@RequestParam @NonNull String firstName,
-                             @RequestParam @NonNull String lastName,
-                             @RequestParam @NonNull String email,
-                             @RequestParam @NonNull String password,
+    public String addNewUser(@RequestParam String firstName,
+                             @RequestParam String lastName,
+                             @RequestParam String email,
+                             @RequestParam String password,
                              Map<String, Object> model) {
         User newUser = User.builder()
                 .firstName(firstName)
