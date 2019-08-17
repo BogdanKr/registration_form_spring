@@ -22,17 +22,17 @@ public class LoginFormController {
         this.loginFormService = loginFormService;
     }
 
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(value = "login", method = RequestMethod.POST)
-//    public void loginFormController(UserDTO user) throws WrongInputException {
-//        //here come data from login page
-//        log.info("{}", user);
-//        loginFormService.checkInput(user);
-//    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public void loginFormController(UserDTO user) throws WrongInputException {
+        //here come data from login page
+        log.info("{}", user);
+        loginFormService.checkInput(user);
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String move(){
-        return "hello";
+        return "login";
     }
 
     @ExceptionHandler(WrongInputException.class)

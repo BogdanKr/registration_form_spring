@@ -17,16 +17,16 @@
         <div class="col-md-8 col-md-offset-2">
             <h3 id="resultMessage">{{message}}</h3>
             <h1 class="page-header">Login with email and password</h1>
-            <#if error>
-                <div class="alert alert-danger" role="alert">
-                    Invalid email or password !
-                </div>
-            </#if>
-            <#if logout>
-            <div class="alert alert-info" role="alert">
-                You've been logged out successful !
-            </div>
-            </#if>
+<#--            <#if error>-->
+<#--                <div class="alert alert-danger" role="alert">-->
+<#--                    Invalid email or password !-->
+<#--                </div>-->
+<#--            </#if>-->
+<#--            <#if logout>-->
+<#--            <div class="alert alert-info" role="alert">-->
+<#--                You've been logged out successful !-->
+<#--            </div>-->
+<#--            </#if>-->
 
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
                   ng-submit="form.$valid && sendForm(auth)" method="post">

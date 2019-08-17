@@ -6,6 +6,8 @@
         <input type="text" name="lastName" placeholder="LastName">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
         <button type="submit">Save</button>
     </form>
 </div>
@@ -15,6 +17,8 @@
 <div>
     <form method="post" action="findNameForm">
         <input type="text" name="findName" placeholder="find use FirstName">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
         <button type="submit">Find user</button>
     </form>
 </div>
@@ -27,5 +31,11 @@
         <span>{{password}}</span>
     </div>
     {{/users}}
+
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>
