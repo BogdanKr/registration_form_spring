@@ -1,6 +1,5 @@
 package ua.registration_form.controller;
 
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,7 @@ public class UserController {
         return "main";
     }
 
-    @PostMapping ("addUser")// Map ONLY POST Requests
+    @PostMapping("addUser")// Map ONLY POST Requests
     public String addNewUser(@RequestParam String firstName,
                              @RequestParam String lastName,
                              @RequestParam String email,

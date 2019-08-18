@@ -2,7 +2,6 @@ package ua.registration_form.service;
 
 import lombok.Data;
 import lombok.NonNull;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ua.registration_form.dto.UserDTO;
 import ua.registration_form.entity.DBNote;

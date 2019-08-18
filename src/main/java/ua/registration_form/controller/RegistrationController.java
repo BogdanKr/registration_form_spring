@@ -27,6 +27,7 @@ public class RegistrationController {
             model.put("message", "User already exist ");
             return "registration";
         }
+        user.setEmail(user.getUsername());
         user.setActive(true);
         user.setRoleType(RoleType.USER);
         user.setFirstName("");

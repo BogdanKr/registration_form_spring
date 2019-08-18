@@ -26,7 +26,7 @@ public class RegFormController {
     }
 
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity handlerRuntimeException (RuntimeException ex){
+    public ResponseEntity handlerRuntimeException(RuntimeException ex) {
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }

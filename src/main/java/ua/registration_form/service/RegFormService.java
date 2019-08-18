@@ -5,7 +5,7 @@ import ua.registration_form.dto.NoteDTO;
 
 @Service
 public class RegFormService {
-    public String inputNote(NoteDTO note){
+    public String inputNote(NoteDTO note) {
         return "";
     }
 }

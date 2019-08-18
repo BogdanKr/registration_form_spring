@@ -20,7 +20,7 @@
             <h3 id="resultMessage">{{message}}</h3>
             <h2 class="page-header">Registration Form </h2>
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
-                  ng-submit="form.$valid && sendForm(auth)">
+                  ng-submit="form.$valid && sendForm(auth)" method="post">
                 <div class="form-group">
                     <label id="inputFirstNameLabel" for="exampleInputFirstName">First name</label>
                     <input type="text"
@@ -60,6 +60,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px" ng-disabled="form.$invalid">
                     Submit
                 </button>
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
             </form>
         </div>
     </div>
