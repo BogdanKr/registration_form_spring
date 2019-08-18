@@ -60,7 +60,7 @@
                 <button type="submit" class="btn btn-success" style="margin-top:30px" ng-disabled="form.$invalid">
                     Submit
                 </button>
-                <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+                <input type="hidden" name="_csrf" value="${_csrf.token}">
             </form>
         </div>
     </div>

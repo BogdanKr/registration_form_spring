@@ -1,5 +1,5 @@
-
 <#macro page>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,10 @@
     <title>Regform</title>
 </head>
 <body>
-<#nested >
+
+<#nested>
+
 </body>
 </html>
+
 </#macro>
