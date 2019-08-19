@@ -73,8 +73,15 @@ public class UserController {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(password);
-        if (roleType.equals(RoleType.USER.name())) user.setRoleType(RoleType.USER);
-        else user.setRoleType(RoleType.ADMIN);
+        switch (roleType){
+            case "USER":
+                user.setRoleType(RoleType.USER);
+                break;
+            case "ADMIN":
+                user.setRoleType(RoleType.ADMIN);
+                break;
+        }
+
         userRepository.save(user);
 
         return "redirect:/user/main";

@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 @Data
 @Builder
@@ -32,7 +33,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(RoleType.values());
+        return Collections.singletonList(roleType);
     }
 
     @Override
