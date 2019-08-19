@@ -13,7 +13,6 @@ import ua.registration_form.service.LoginFormService;
 
 @Slf4j
 @Controller
-@RequestMapping()
 public class LoginFormController {
 
     private final LoginFormService loginFormService;

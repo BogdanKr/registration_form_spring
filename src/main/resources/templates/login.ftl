@@ -4,8 +4,7 @@
 <@mymacro.page>
 Login page
 
-<@mylogin.login "/login" />
+<@mylogin.login "/login" false "Login"/>
 
-<a href="/registration">Add new User</a>
 
 </@mymacro.page>

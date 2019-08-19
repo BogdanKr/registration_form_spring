@@ -7,7 +7,9 @@ angular.module("login_form",[])
         let exampleInputPasswordEl = document.getElementById('exampleInputPassword1');
         let exampleInputEmailLabel = document.getElementById('exampleInputEmailLabel');
         let exampleInputPasswordLabel = document.getElementById('exampleInputPasswordLabel');
-        exampleInputEmailEl.addEventListener('input', () => {
+        if(!exampleInputEmailEl )
+            return;
+        exampleInputEmailEl.addEventListener('input', function() {
             exampleInputEmailLabel.style.color = 'black';
         exampleInputPasswordLabel.style.color = 'black';
         exampleInputEmailEl.style.color = 'black';
@@ -20,13 +22,13 @@ angular.module("login_form",[])
                 data: $.param(auth),
                 headers: { "Content-Type" : "application/x-www-form-urlencoded" }
             }).then(
-                (data) => {
+                function(data) {
                 resultMessageEl.style.color = 'green';
             $scope.message = "Доступ разрешен";
             exampleInputEmailEl.value = '';
             exampleInputPasswordEl.value = '';
         },
-            (error) => {
+            function(error) {
                 exampleInputEmailLabel.style.color = 'red';
                 exampleInputPasswordLabel.style.color = 'red';
                 resultMessageEl.style.color = 'red';

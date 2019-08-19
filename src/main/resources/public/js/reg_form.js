@@ -8,7 +8,7 @@ angular.module("registration_form",[])
         let inputLastNameLabel = document.getElementById('inputLastNameLabel');
         let emailEl = document.getElementById('exampleInputEmail1');
         let passwordEl = document.getElementById('exampleInputPassword1');
-        exampleInputFirstNameEl.addEventListener('input', () => {
+        exampleInputFirstNameEl.addEventListener('input', function()  {
             inputFirstNameLabel.style.color = 'black';
         inputLastNameLabel.style.color = 'black';
         $scope.message = '';
@@ -20,13 +20,13 @@ angular.module("registration_form",[])
                 data: $.param(auth),
                 headers: { "Content-Type" : "application/x-www-form-urlencoded" }
             }).then(
-                (data) => {
+                function(data) {
                 resultMessageEl.style.color = 'green';
             $scope.message = 'Успешно зарегистрирован';
             exampleInputFirstNameEl.value = 'КТО МОЛОДЕЦ????';
             exampleInputLastNameEl.value = 'ТЫ МОЛОДЕЦ!!!!!';
         },
-            (error) => {
+           function (error) {
                 resultMessageEl.style.color = 'red';
                 inputFirstNameLabel.style.color = 'red';
                 inputLastNameLabel.style.color = 'red';

@@ -20,7 +20,7 @@
             <h3 id="resultMessage">{{message}}</h3>
             <h2 class="page-header">Registration Form </h2>
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
-                  ng-submit="form.$valid && sendForm(auth)" method="post">
+                  ng-submit="form.$valid && sendForm(auth)">
                 <div class="form-group">
                     <label id="inputFirstNameLabel" for="exampleInputFirstName">First name</label>
                     <input type="text"
@@ -65,6 +65,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/reg_form.js"></script>
+<script type="text/javascript" src="/public/js/reg_form.js"></script>
 </body>
 </html>

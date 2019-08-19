@@ -6,7 +6,7 @@
 
     ${message!}
 
-<@mylogin.login "/registration" />
+<@mylogin.login "/registration" true "Registration"/>
 
     <a href="/login">Login</a>
 

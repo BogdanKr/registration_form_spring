@@ -20,7 +20,7 @@
             <h1 class="page-header">Login with email and password</h1>
 
             <form style="margin-bottom: 30px" name="form" autocomplete="off" novalidate
-                  ng-submit="form.$valid && sendForm(auth)" method="post">
+                  ng-submit="form.$valid && sendForm(auth)">
                 <div class="form-group">
                     <label id="exampleInputEmailLabel" for="exampleInputEmail1">Email address</label>
                     <input type="email"
