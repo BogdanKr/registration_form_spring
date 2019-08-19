@@ -36,6 +36,10 @@ public class User implements UserDetails {
         return Collections.singletonList(roleType);
     }
 
+    public boolean isAdmin() {
+        return roleType.equals(RoleType.ADMIN);
+    }
+
     @Override
     public String getUsername() {
         return email;

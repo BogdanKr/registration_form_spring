@@ -19,5 +19,4 @@
     </form>
 
 
-    <div><a href="/user/main">User List</a></div>
 </@mymacro.page>

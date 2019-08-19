@@ -1,11 +1,11 @@
 <#import "parts/common.ftl" as mymacro>
 <#import "parts/login.ftl" as mylogin>
 
-<@mylogin.logout/>
 
 <@mymacro.page>
+<@mylogin.logout/>
 
-<div>Hello, user</div>
-<div><a href="/user/main">User list</a></div>
+    <h5>Hello User</h5>
+    <div>This my first registration form</div>
 
 </@mymacro.page>

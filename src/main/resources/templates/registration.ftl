@@ -2,10 +2,12 @@
 <#import "parts/login.ftl" as mylogin>
 
 <@mymacro.page>
-Add new user
+<div class="mb-1"> Add new user </div>
 
     ${message!}
 
 <@mylogin.login "/registration" />
+
+    <a href="/login">Login</a>
 
 </@mymacro.page>
