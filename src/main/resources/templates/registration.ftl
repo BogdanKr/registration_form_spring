@@ -4,7 +4,7 @@
 <@mymacro.page>
 Add new user
 
-    ${message}
+    ${message!}
 
 <@mylogin.login "/registration" />
 

@@ -29,6 +29,7 @@ public class UserController {
         }
 
         model.addAttribute("users", users);
+        model.addAttribute("filter", findName);
         return "main";
     }
 

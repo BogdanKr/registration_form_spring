@@ -6,6 +6,7 @@
         <@mylogin.logout />
     </div>
     <div>Edd user</div>
+
     <div>
         <form method="post" action="addUser">
             <input type="text" name="firstName" placeholder="FirstName">
@@ -32,7 +33,7 @@
 
     <div>
         <form method="get" action="main">
-            <input type="text" name="findName" placeholder="find with user FirstName">
+            <input type="text" name="findName" placeholder="find with user FirstName" value="${filter!}">
 
             <button type="submit">Find user</button>
         </form>
