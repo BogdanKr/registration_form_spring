@@ -2,7 +2,7 @@
 
 <@mymacro.page>
 
-<div>Hello, user</div>
-<div><a href="/main">User list</a></div>
+    <div>User editor</div>
+    <div><a href="/main">User List</a></div>
 
 </@mymacro.page>

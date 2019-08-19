@@ -9,7 +9,7 @@
 <body>
 
 <#nested>
-
+<a href="/">Main page</a>
 </body>
 </html>
 

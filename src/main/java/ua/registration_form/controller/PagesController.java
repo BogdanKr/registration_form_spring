@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PagesController {
 
+    @GetMapping("/")
+    public String greeting() {
+        return "greeting";
+    }
+
     @GetMapping("/form")
     public String regForm() {
         return "reg_form";

@@ -18,11 +18,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
-    public String greeting() {
-        return "greeting";
-    }
-
     @GetMapping("/main")
     public String main(@RequestParam(required = false) String findName, Model model) {
         List<User> users ;
@@ -56,7 +51,14 @@ public class UserController {
         Iterable<User> allUsers = userRepository.findAll();
         model.addAttribute("users", allUsers);
 
-        return "main";
+        return "redirect:/main";
     }
+
+    @GetMapping("/user/{user}")
+    public String serEditForm(@RequestParam User user, Model model){
+        model.addAttribute("user", user);
+        return "userEdit";
+    }
+
 
 }
