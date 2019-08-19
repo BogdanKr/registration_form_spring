@@ -51,7 +51,7 @@ public class UserController {
         Iterable<User> allUsers = userRepository.findAll();
         model.addAttribute("users", allUsers);
 
-        return "redirect:/main";
+        return "redirect:/user/main";
     }
 
     @GetMapping("{user}")

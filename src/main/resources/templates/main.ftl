@@ -7,7 +7,7 @@
     </div>
     <div>Edd user</div>
     <div>
-        <form method="post" action="user/addUser">
+        <form method="post" action="addUser">
             <input type="text" name="firstName" placeholder="FirstName">
             <input type="text" name="lastName" placeholder="LastName">
             <input type="email" name="email" placeholder="Email">
@@ -31,7 +31,7 @@
     <div>Список юзеров</div>
 
     <div>
-        <form method="get" action="/user/main">
+        <form method="get" action="main">
             <input type="text" name="findName" placeholder="find with user FirstName">
 
             <button type="submit">Find user</button>
