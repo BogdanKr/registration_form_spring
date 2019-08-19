@@ -6,7 +6,7 @@
         <@mylogin.logout />
     </div>
     <div>Edd user</div>
-
+    ${message!}
     <div>
         <form method="post" action="addUser">
             <input type="text" name="firstName" placeholder="FirstName">
@@ -52,7 +52,7 @@
         </tr>
         </thead>
         <tbody>
-        <#list users as user>
+        <#list users! as user>
             <tr>
                 <td>${user.id}</td>
                 <td>${user.firstName}</td>

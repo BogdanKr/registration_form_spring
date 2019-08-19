@@ -1,5 +1,6 @@
 package ua.registration_form.controller;
 
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class UserController {
 
     @GetMapping("/main")
     public String main(@RequestParam(required = false) String findName, Model model) {
-        List<User> users ;
+        List<User> users;
 
         if (findName != null && !findName.isEmpty())
             users = userRepository.findByFirstName(findName);
@@ -39,6 +40,11 @@ public class UserController {
                              @RequestParam String email,
                              @RequestParam String password,
                              Model model) {
+        User userFromDb = userRepository.findByEmail(email);
+        if (userFromDb != null) {
+            model.addAttribute("message", "User already exist ");
+            return "main";
+        }
         User newUser = User.builder()
                 .firstName(firstName)
                 .lastName(lastName)
@@ -56,11 +62,12 @@ public class UserController {
     }
 
     @GetMapping("{user}")
-    public String serEditForm(@PathVariable User user, Model model){
+    public String serEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", RoleType.values());
         return "userEdit";
     }
+
     @PostMapping
     public String userSaveEdit(
             @RequestParam String firstName,
@@ -68,13 +75,13 @@ public class UserController {
             @RequestParam String email,
             @RequestParam String password,
             @RequestParam String roleType,
-            @RequestParam("userId") User user){
+            @RequestParam("userId") User user) {
 
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(password);
-        switch (roleType){
+        switch (roleType) {
             case "USER":
                 user.setRoleType(RoleType.USER);
                 break;
