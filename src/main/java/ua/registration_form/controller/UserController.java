@@ -1,12 +1,9 @@
 package ua.registration_form.controller;
 
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ua.registration_form.entity.RoleType;
 import ua.registration_form.entity.User;
 import ua.registration_form.repository.UserRepository;
@@ -14,6 +11,7 @@ import ua.registration_form.repository.UserRepository;
 import java.util.List;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -54,10 +52,30 @@ public class UserController {
         return "redirect:/main";
     }
 
-    @GetMapping("/user/{user}")
-    public String serEditForm(@RequestParam User user, Model model){
+    @GetMapping("{user}")
+    public String serEditForm(@PathVariable User user, Model model){
         model.addAttribute("user", user);
+        model.addAttribute("roles", RoleType.values());
         return "userEdit";
+    }
+    @PostMapping
+    public String userSaveEdit(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String roleType,
+            @RequestParam("userId") User user){
+
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+        if (roleType.equals(RoleType.USER.name())) user.setRoleType(RoleType.USER);
+        else user.setRoleType(RoleType.ADMIN);
+        userRepository.save(user);
+
+        return "redirect:/user/main";
     }
 
 

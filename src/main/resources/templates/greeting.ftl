@@ -3,6 +3,6 @@
 <@mymacro.page>
 
 <div>Hello, user</div>
-<div><a href="/main">User list</a></div>
+<div><a href="/user/main">User list</a></div>
 
 </@mymacro.page>
