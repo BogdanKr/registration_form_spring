@@ -1,4 +1,7 @@
 <#import "parts/common.ftl" as mymacro>
+<#import "parts/login.ftl" as mylogin>
+
+<@mylogin.logout/>
 
 <@mymacro.page>
 
