@@ -35,6 +35,6 @@ public class RegistrationController {
         user.setFirstName("");
         user.setLastName("");
         userRepository.save(user);
-        return "redirect:/login";
+        return "redirect:/greeting";
     }
 }

@@ -15,13 +15,6 @@ import ua.registration_form.service.LoginFormService;
 @Controller
 public class LoginFormController {
 
-    private final LoginFormService loginFormService;
-
-    @Autowired
-    public LoginFormController(LoginFormService loginFormService) {
-        this.loginFormService = loginFormService;
-    }
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/mylogin", method = RequestMethod.POST)
     public String loginFormController(UserDTO user) throws WrongInputException {
