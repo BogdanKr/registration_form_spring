@@ -1,4 +1,6 @@
 <#include "security.ftl">
+<#import "login.ftl" as mylogin>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">RegForm</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -12,13 +14,18 @@
                 <a class="nav-link" href="/">Home </a>
             </li>
             <#if isAdmin>
-            <li class="nav-item">
-                <a class="nav-link" href="/user/main">User list </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/main">User list </a>
+                </li>
             </#if>
         </ul>
 
-        <div class="navbar-text"> ${name}</div>
+        <div class="navbar-text mr-3"> ${name}</div>
+        <#if name!="guest">
+            <div>
+                <@mylogin.logout />
+            </div>
+        </#if>
     </div>
 </nav>
 

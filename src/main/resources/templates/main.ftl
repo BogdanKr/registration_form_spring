@@ -1,10 +1,7 @@
 <#import "parts/common.ftl" as mymacro>
-<#import "parts/login.ftl" as mylogin>
 <@mymacro.page>
 
-    <div>
-        <@mylogin.logout />
-    </div>
+
     <div>Edd user</div>
     ${message!}
     <div>
@@ -13,16 +10,6 @@
             <input type="text" name="lastName" placeholder="LastName">
             <input type="email" name="email" placeholder="Email">
             <input type="password" name="password" placeholder="Password">
-<#--            <div class="input-group mb-3">-->
-<#--                <div class="input-group-prepend">-->
-<#--                    <label class="input-group-text" for="inputGroupSelect01">Roles</label>-->
-<#--                </div>-->
-<#--                <select class="custom-select" id="inputGroupSelect01">-->
-<#--                    <option selected>Choose...</option>-->
-<#--                    <option value="1">Admin</option>-->
-<#--                    <option value="2">User</option>-->
-<#--                </select>-->
-<#--            </div>-->
 
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <button type="submit">Save</button>

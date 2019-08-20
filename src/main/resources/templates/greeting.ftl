@@ -4,7 +4,6 @@
 
 
 <@mymacro.page>
-<@mylogin.logout/>
 
     <h5>Hello ${name} <#if isAdmin>you are ADMIN !</#if></h5>
     <div>This my first registration form</div>

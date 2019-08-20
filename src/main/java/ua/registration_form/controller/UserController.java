@@ -7,28 +7,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.registration_form.entity.RoleType;
 import ua.registration_form.entity.User;
-import ua.registration_form.repository.UserRepository;
-
-import java.util.List;
+import ua.registration_form.service.UserService;
 
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
+
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping("/main")
     public String main(@RequestParam(required = false) String findName, Model model) {
-        List<User> users;
-
-        if (findName != null && !findName.isEmpty())
-            users = userRepository.findByFirstName(findName);
-        else {
-            users = userRepository.findAll();
-        }
-
-        model.addAttribute("users", users);
+        model.addAttribute("users", userService.findByName(findName));
         model.addAttribute("filter", findName);
         return "main";
     }
@@ -39,23 +30,12 @@ public class UserController {
                              @RequestParam String email,
                              @RequestParam String password,
                              Model model) {
-        User userFromDb = userRepository.findByEmail(email);
+        User userFromDb = userService.addUser(firstName, lastName, email, password);
         if (userFromDb != null) {
             model.addAttribute("message", "User already exist ");
             return "main";
         }
-        User newUser = User.builder()
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(email)
-                .password(password)
-                .active(true)
-                .roleType(RoleType.USER)
-                .build();
-        userRepository.save(newUser);
-
-        Iterable<User> allUsers = userRepository.findAll();
-        model.addAttribute("users", allUsers);
+        model.addAttribute("users", userService.allUsers());
 
         return "redirect:/user/main";
     }
@@ -75,22 +55,7 @@ public class UserController {
             @RequestParam String password,
             @RequestParam String roleType,
             @RequestParam("userId") User user) {
-
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setEmail(email);
-        user.setPassword(password);
-        switch (roleType) {
-            case "USER":
-                user.setRoleType(RoleType.USER);
-                break;
-            case "ADMIN":
-                user.setRoleType(RoleType.ADMIN);
-                break;
-        }
-
-        userRepository.save(user);
-
+        userService.userEdit(firstName, lastName, email, password, roleType, user);
         return "redirect:/user/main";
     }
 
