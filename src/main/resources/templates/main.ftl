@@ -41,7 +41,7 @@
         <tbody>
         <#list users! as usr>
             <tr>
-                <td>${usr.id}</td>
+<#--                <td>${usr.id}</td>-->
                 <td>${usr.firstName}</td>
                 <td>${usr.lastName}</td>
                 <td>${usr.email}</td>
