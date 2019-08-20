@@ -22,13 +22,13 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
 
-    public User addUser(String firstName,
-                        String lastName,
-                        String email,
-                        String password) {
+    public boolean addUser(String firstName,
+                           String lastName,
+                           String email,
+                           String password) {
         User userFromDb = userRepository.findByEmail(email);
         if (userFromDb != null) {
-            return userFromDb;
+            return false;
         }
 
         User newUser = User.builder()
@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
                 .roleType(RoleType.USER)
                 .build();
         userRepository.save(newUser);
-        return null;
+        return true;
     }
 
     public void userEdit(String firstName,
@@ -53,6 +53,7 @@ public class UserService implements UserDetailsService {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(password);
+        if (roleType == null) roleType = "USER";
         switch (roleType) {
             case "USER":
                 user.setRoleType(RoleType.USER);

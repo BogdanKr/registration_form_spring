@@ -36,5 +36,6 @@
     <#else >
         No Message
     </#list>
-
+    </tbody>
+</table>
 </@mymacro.page>

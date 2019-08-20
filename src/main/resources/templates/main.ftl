@@ -39,16 +39,16 @@
         </tr>
         </thead>
         <tbody>
-        <#list users! as user>
+        <#list users! as usr>
             <tr>
-<#--                <td>${user.id}</td>-->
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.email}</td>
-                <td>${user.password}</td>
-                <td>${user.active?then('Active','Not active')}</td>
-                <td>${user.roleType}</td>
-                <td><a href="/user/${user.id}">Edit</a> </td>
+                <td>${usr.id}</td>
+                <td>${usr.firstName}</td>
+                <td>${usr.lastName}</td>
+                <td>${usr.email}</td>
+                <td>${usr.password}</td>
+                <td>${usr.active?then('Active','Not active')}</td>
+                <td>${usr.roleType}</td>
+                <td><a href="/user/${usr.id}">Edit</a> </td>
             </tr>
         <#else >
             No user

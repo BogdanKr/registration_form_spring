@@ -30,8 +30,8 @@ public class UserController {
                              @RequestParam String email,
                              @RequestParam String password,
                              Model model) {
-        User userFromDb = userService.addUser(firstName, lastName, email, password);
-        if (userFromDb != null) {
+        boolean userFromDb = userService.addUser(firstName, lastName, email, password);
+        if (!userFromDb) {
             model.addAttribute("message", "User already exist ");
             return "main";
         }
@@ -40,23 +40,25 @@ public class UserController {
         return "redirect:/user/main";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{user}")
-    public String serEditForm(@PathVariable User user, Model model) {
-        model.addAttribute("user", user);
+    public String userEditForm(@PathVariable User user, Model model) {
+        model.addAttribute("usr", user);
         model.addAttribute("roles", RoleType.values());
         return "userEdit";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('USER')")
     @PostMapping
     public String userSaveEdit(
             @RequestParam String firstName,
             @RequestParam String lastName,
             @RequestParam String email,
             @RequestParam String password,
-            @RequestParam String roleType,
+            @RequestParam(required = false) String roleType,
             @RequestParam("userId") User user) {
         userService.userEdit(firstName, lastName, email, password, roleType, user);
-        return "redirect:/user/main";
+        return roleType == null ? "redirect:/" : "redirect:/user/main";
     }
 
 
