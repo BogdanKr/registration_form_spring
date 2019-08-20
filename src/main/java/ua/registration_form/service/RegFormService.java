@@ -1,6 +1,7 @@
 package ua.registration_form.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.registration_form.dto.NoteDTO;
 import ua.registration_form.entity.RoleType;
@@ -11,6 +12,8 @@ import ua.registration_form.repository.UserRepository;
 public class RegFormService {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public String inputNote(NoteDTO note) {
         return "";
@@ -26,6 +29,7 @@ public class RegFormService {
         user.setRoleType(RoleType.USER);
         user.setFirstName("");
         user.setLastName("");
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }

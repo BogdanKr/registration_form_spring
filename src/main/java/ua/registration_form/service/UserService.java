@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .active(true)
                 .roleType(RoleType.USER)
                 .build();
@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         if (roleType == null) roleType = "USER";
         switch (roleType) {
             case "USER":
