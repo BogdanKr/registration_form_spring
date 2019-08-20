@@ -40,7 +40,6 @@ public class UserController {
         return "redirect:/user/main";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("usr", user);

@@ -30,7 +30,7 @@ public class MainController {
     public String addMessage(@AuthenticationPrincipal User user,
                              @RequestParam String text,
                              @RequestParam String tag,
-                             Model model){
+                             Model model) {
         Message message = new Message(text, tag, user);
         if (text.isEmpty() && tag.isEmpty()) return greeting(model);
         messageRepository.save(message);

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import ua.registration_form.entity.Exceptions.WrongInputException;
 import ua.registration_form.entity.RoleType;
 import ua.registration_form.entity.User;
 import ua.registration_form.repository.UserRepository;
@@ -16,10 +18,14 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
+        if (user == null) throw new UsernameNotFoundException("Wrong input!!");
+        return user;
     }
 
     public boolean addUser(String firstName,

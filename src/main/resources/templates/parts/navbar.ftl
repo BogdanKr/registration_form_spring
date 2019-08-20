@@ -13,7 +13,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home </a>
             </li>
-            <#if name!="guest">
+            <#if user??>
             <li class="nav-item">
                 <a class="nav-link" href="/registration/edit/${user.id}">Edit profile</a>
             </li>

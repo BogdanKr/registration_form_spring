@@ -16,7 +16,7 @@ public class RegFormService {
         return "";
     }
 
-    public boolean regUser(User user){
+    public boolean regUser(User user) {
         User userFromDb = userRepository.findByEmail(user.getEmail());
         if (userFromDb != null) {
             return false;

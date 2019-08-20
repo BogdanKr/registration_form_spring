@@ -2,9 +2,13 @@
 <#import "parts/login.ftl" as mylogin>
 
 <@mymacro.page>
-Login page
-
-<@mylogin.login "/login" false "Login"/>
+    Login page
+    <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
+        <div class="alert alert-danger" role="alert">
+            ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
+        </div>
+    </#if>
+    <@mylogin.login "/login" false "Login"/>
 
 
 </@mymacro.page>
