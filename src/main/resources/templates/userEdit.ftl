@@ -5,12 +5,19 @@
 
     <div>User editor</div>
     <form action="/user" method="post">
-        <input type="text" name="firstName" value="${usr.firstName}">
-        <input type="text" name="lastName" value="${usr.lastName}">
-        <input type="email" name="email" value="${usr.email}">
-        <input type="password" name="password" value="">
+        <label >Firs Name
+            <input type="text" name="firstName" value="${usr.firstName}">
+        </label>
+        <label>Last Name
+            <input type="text" name="lastName" value="${usr.lastName}">
+        </label>
+        <label>Email
+            <input type="email" name="email" value="${usr.email}">
+        </label>
+        <label>Password
+            <input type="password" name="password" value="">
+        </label>
         <#if isAdmin>
-<#--        <input type="checkbox" name="active" value="${user.active}" >-->
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitch1"
                         ${usr.active?string("checked","")} name="active">
