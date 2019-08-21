@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ua.registration_form.entity.Exceptions.WrongInputException;
 import ua.registration_form.entity.RoleType;
 import ua.registration_form.entity.User;
 import ua.registration_form.repository.UserRepository;
@@ -53,13 +52,15 @@ public class UserService implements UserDetailsService {
                          String lastName,
                          String email,
                          String password,
+                         boolean active,
                          String roleType,
                          User user) {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
+        if (!password.isEmpty()) user.setPassword(passwordEncoder.encode(password));
         if (roleType == null) roleType = "USER";
+        else user.setActive(active);
         switch (roleType) {
             case "USER":
                 user.setRoleType(RoleType.USER);

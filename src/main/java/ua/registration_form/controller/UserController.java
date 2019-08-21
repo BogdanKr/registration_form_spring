@@ -54,11 +54,10 @@ public class UserController {
             @RequestParam String lastName,
             @RequestParam String email,
             @RequestParam String password,
+            @RequestParam(required = false) boolean active,
             @RequestParam(required = false) String roleType,
             @RequestParam("userId") User user) {
-        userService.userEdit(firstName, lastName, email, password, roleType, user);
+        userService.userEdit(firstName, lastName, email, password, active, roleType, user);
         return roleType == null ? "redirect:/" : "redirect:/user/main";
     }
-
-
 }

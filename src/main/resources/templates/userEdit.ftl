@@ -8,9 +8,14 @@
         <input type="text" name="firstName" value="${usr.firstName}">
         <input type="text" name="lastName" value="${usr.lastName}">
         <input type="email" name="email" value="${usr.email}">
-        <input type="password" name="password" value="${usr.password}">
-<#--        <input type="checkbox" name="active" value="${user.active}" >-->
+        <input type="password" name="password" value="">
         <#if isAdmin>
+<#--        <input type="checkbox" name="active" value="${user.active}" >-->
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                        ${usr.active?string("checked","")} name="active">
+                <label class="custom-control-label" for="customSwitch1" >Active</label>
+            </div>
         <#list roles  as role>
         <label><input type="radio" name="roleType" value="${role}"
                     ${usr.roleType?contains(role)?string("checked","")}>${role}</label>
