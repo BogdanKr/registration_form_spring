@@ -4,7 +4,7 @@
 
 <@mymacro.page>
 
-    <#if isCurrentUser>
+    <#if isCurrentUser || isAdmin>
     <#include "parts/messageEdit.ftl"/>
     </#if>
     <#include "parts/messageList.ftl"/>

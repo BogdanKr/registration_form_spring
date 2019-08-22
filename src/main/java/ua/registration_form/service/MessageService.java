@@ -17,10 +17,10 @@ public class MessageService {
             Message newMessage = new Message(text, tag, currentUser);
             messageRepository.save(newMessage);
         } else {
-            if (message.getAuth().equals(currentUser)) {
-                if (!StringUtils.isEmpty(text)) message.setText(text);
-                if (!StringUtils.isEmpty(tag)) message.setTag(tag);
-            }
+//            if (message.getAuth().equals(currentUser)) {
+            if (!StringUtils.isEmpty(text)) message.setText(text);
+            if (!StringUtils.isEmpty(tag)) message.setTag(tag);
+//            }
             messageRepository.save(message);
         }
     }
