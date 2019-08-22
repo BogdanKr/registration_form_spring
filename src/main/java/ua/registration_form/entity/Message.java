@@ -27,10 +27,10 @@ public class Message {
     inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<User> likes = new ArrayList<>();
 
-    public Message(String text, String tag, User user) {
+    public Message(String text, String tag, User auth) {
         this.text = text;
         this.tag = tag;
-        this.auth = user;
+        this.auth = auth;
     }
 
 }
