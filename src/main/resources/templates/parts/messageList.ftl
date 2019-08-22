@@ -7,6 +7,7 @@
         <th>Text</th>
         <th>Tag</th>
         <th>Author name</th>
+        <th>Message likes</th>
     </tr>
     </thead>
     <tbody>
@@ -14,7 +15,7 @@
         <tr>
             <td>${message.text}</td>
             <td>#${message.tag}</td>
-            <td><a href="/messages/${message.auth.id}">${message.auth.firstName}  ${message.id}</a></td>
+            <td><a href="/messages/${message.auth.id}">${message.auth.firstName}</a></td>
 
             <td><a href="/messages/${message.id}/like">
                     <#if message.meLiked>
