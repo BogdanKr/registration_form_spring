@@ -14,6 +14,9 @@
                 <a class="nav-link" href="/">Home </a>
             </li>
             <#if user??>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my-messages/${user.id}">My messages </a>
+                </li>
             <li class="nav-item">
                 <a class="nav-link" href="/registration/edit/${user.id}">Edit profile</a>
             </li>

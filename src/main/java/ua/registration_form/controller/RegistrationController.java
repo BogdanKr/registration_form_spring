@@ -31,7 +31,8 @@ public class RegistrationController {
             model.put("message", "User already exist ");
             return "registration";
         }
-        return "redirect:/greeting";
+        model.put("message", "User successful registered");
+        return "login";
     }
 
     @GetMapping("edit/{user}")

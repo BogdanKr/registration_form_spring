@@ -7,12 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Collection;
-import java.util.Collections;
+import javax.persistence.*;
+import java.util.*;
 
 @Data
 @Builder
@@ -20,6 +16,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -29,6 +26,8 @@ public class User implements UserDetails {
     private String password;
     private boolean active;
     private RoleType roleType;
+    @OneToMany(mappedBy = "auth" , cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+    private List<Message> messages;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -64,4 +63,16 @@ public class User implements UserDetails {
         return isActive();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

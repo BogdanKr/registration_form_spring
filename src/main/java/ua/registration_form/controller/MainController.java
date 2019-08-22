@@ -21,7 +21,7 @@ public class MainController {
 
     @GetMapping
     public String greeting(Model model) {
-        List<Message> messageList = messageRepository.findAll();
+        Iterable<Message> messageList = messageRepository.findAll();
         model.addAttribute("messages", messageList);
         return "greeting";
     }
@@ -34,7 +34,7 @@ public class MainController {
         Message message = new Message(text, tag, user);
         if (text.isEmpty() && tag.isEmpty()) return greeting(model);
         messageRepository.save(message);
-        List<Message> messageList = messageRepository.findAll();
+        Iterable<Message> messageList = messageRepository.findAll();
         model.addAttribute("messages", messageList);
         return "greeting";
     }

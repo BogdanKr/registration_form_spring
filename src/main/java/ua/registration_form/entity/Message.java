@@ -24,4 +24,5 @@ public class Message {
         this.tag = tag;
         this.auth = user;
     }
+
 }
