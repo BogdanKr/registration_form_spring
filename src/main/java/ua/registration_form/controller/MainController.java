@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.registration_form.dto.MessageDto;
 import ua.registration_form.entity.Message;
 import ua.registration_form.entity.User;
 import ua.registration_form.repository.MessageRepository;
@@ -20,8 +21,9 @@ public class MainController {
     private MessageRepository messageRepository;
 
     @GetMapping
-    public String greeting(Model model) {
-        Iterable<Message> messageList = messageRepository.findAll();
+    public String greeting(@AuthenticationPrincipal User currentUser,
+                           Model model) {
+        List<MessageDto> messageList = messageRepository.findAll(currentUser);
         model.addAttribute("messages", messageList);
         return "greeting";
     }
@@ -32,9 +34,9 @@ public class MainController {
                              @RequestParam String tag,
                              Model model) {
         Message message = new Message(text, tag, user);
-        if (text.isEmpty() && tag.isEmpty()) return greeting(model);
+        if (text.isEmpty() && tag.isEmpty()) return greeting(user, model);
         messageRepository.save(message);
-        Iterable<Message> messageList = messageRepository.findAll();
+        List<MessageDto> messageList = messageRepository.findAll(user);
         model.addAttribute("messages", messageList);
         return "greeting";
     }

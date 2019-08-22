@@ -3,9 +3,12 @@ package ua.registration_form.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import ua.registration_form.dto.MessageDto;
 import ua.registration_form.entity.Message;
 import ua.registration_form.entity.User;
 import ua.registration_form.repository.MessageRepository;
+
+import java.util.List;
 
 @Service
 public class MessageService {
@@ -23,5 +26,9 @@ public class MessageService {
 //            }
             messageRepository.save(message);
         }
+    }
+
+    public List<MessageDto> messageListForUser(User currentUser, User author) {
+        return messageRepository.findByUser(author, currentUser);
     }
 }

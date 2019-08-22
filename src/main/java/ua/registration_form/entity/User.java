@@ -26,6 +26,7 @@ public class User implements UserDetails {
     private String password;
     private boolean active;
     private RoleType roleType;
+
     @OneToMany(mappedBy = "auth" , cascade = CascadeType.ALL, fetch = FetchType.LAZY )
     private List<Message> messages;
 
